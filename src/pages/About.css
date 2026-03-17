@@ -1,0 +1,38 @@
+.about-heading {
+  font-size: 13px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #999;
+  margin-bottom: 20px;
+}
+
+.about-bio {
+  font-size: var(--headline-size);
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  max-width: 520px;
+}
+
+.about-contact {
+  margin-top: var(--pad);
+}
+
+.about-links {
+  list-style: none;
+}
+
+.about-links li {
+  margin-bottom: 12px;
+}
+
+.about-link {
+  font-size: 17px;
+  transition: opacity 0.2s ease;
+}
+
+.about-link:hover {
+  opacity: 0.5;
+}

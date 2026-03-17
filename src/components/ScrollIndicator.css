@@ -1,0 +1,21 @@
+.scroll-indicator {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-indicator);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 100;
+}
+
+.scroll-indicator:hover {
+  transform: scale(1.08);
+  opacity: 0.85;
+}

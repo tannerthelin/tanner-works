@@ -1,0 +1,21 @@
+.works-grid {
+  padding: var(--grid-pad);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--grid-gap);
+}
+
+.grid-item {
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.grid-image {
+  width: 100%;
+  display: block;
+  border-radius: 0;
+  background: var(--color-image-bg);
+}
