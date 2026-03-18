@@ -32,6 +32,10 @@
   opacity: 0.5;
 }
 
+.status-coming-soon {
+  opacity: 0.5;
+}
+
 @media (max-width: 768px) {
   .project-table td:nth-child(3) {
     display: none;

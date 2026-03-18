@@ -21,8 +21,8 @@ function Nav() {
       right={
         <div className="nav-right-wrapper">
           <nav className="nav-right">
-            <NavLink to="/index" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
-              Works
+            <NavLink to="/work" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+              Work
             </NavLink>
             <NavLink to="/about" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
               About

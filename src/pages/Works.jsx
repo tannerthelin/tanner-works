@@ -20,7 +20,10 @@ function Works() {
         right={
           <div className="headline">
             <p>
-              Design generalist with a background in agencies & early-stage startups. Currently Head of Design at{' '}
+              Designer who builds. Based in Salt Lake City with a background in agencies & early-stage startups.
+              <br />
+              <br />
+              Currently Head of Design at{' '}
               <a href="https://www.joinleland.com" className="headline-link" target="_blank" rel="noopener noreferrer">
                 Leland
               </a>.

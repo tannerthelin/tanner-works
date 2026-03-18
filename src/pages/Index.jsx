@@ -3,13 +3,10 @@ import Section from '../components/Section.jsx'
 import './Index.css'
 
 const projects = [
-  { year: '2025', project: 'Brand Refresh', role: 'Design Lead', client: 'Linear' },
-  { year: '2024', project: 'Marketing Site', role: 'Designer', client: 'Linear' },
-  { year: '2024', project: 'Product Design System', role: 'Design Lead', client: 'Linear' },
-  { year: '2023', project: 'Mobile App', role: 'Designer', client: 'Personal' },
-  { year: '2022', project: 'Dashboard UI', role: 'Designer', client: 'Freelance' },
-  { year: '2021', project: 'Identity System', role: 'Art Director', client: 'Studio' },
-  { year: '2020', project: 'Portfolio Site', role: 'Designer & Developer', client: 'Personal' },
+  { year: '2026', project: 'Leland Rebrand', status: 'Coming Soon', client: 'Leland' },
+  { year: '2026', project: 'Playlogged App', status: 'Coming Soon', client: 'Personal' },
+  { year: '2025', project: 'Leland Product', status: 'Coming Soon', client: 'Leland' },
+  { year: '2025', project: 'Riverwoods Brand', status: 'Coming Soon', client: 'Freelance' },
 ]
 
 function Index() {
@@ -34,7 +31,9 @@ function Index() {
               <tr key={i}>
                 <td>{p.year}</td>
                 <td>{p.project}</td>
-                <td>{p.role}</td>
+                <td className={p.status === 'Coming Soon' ? 'status-coming-soon' : ''}>
+                  {p.status}
+                </td>
                 <td>{p.client}</td>
               </tr>
             ))}
