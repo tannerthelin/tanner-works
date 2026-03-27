@@ -34,6 +34,14 @@
   opacity: 0.5;
 }
 
+.claude-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 8px;
+  vertical-align: middle;
+  transform: rotate(-4deg);
+}
+
 .status-coming-soon {
   opacity: 0.5;
 }

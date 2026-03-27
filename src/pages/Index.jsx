@@ -1,10 +1,11 @@
 import Nav from '../components/Nav.jsx'
 import Section from '../components/Section.jsx'
+import claudeIcon from '../assets/claude.svg'
 import './Index.css'
 
 const projects = [
   { year: '2026', project: 'Leland Rebrand', status: 'Coming Soon', client: 'Leland' },
-  { year: '2026', project: 'Playlogged App', status: 'Coming Soon', client: 'Personal' },
+  { year: '2026', project: 'Playlogged App', status: 'Coming Soon', client: 'Personal', ai: true },
   { year: '2025', project: 'Leland Product', status: 'Coming Soon', client: 'Leland' },
   { year: '2025', project: 'Riverwoods Brand', status: 'Coming Soon', client: 'Freelance' },
 ]
@@ -30,7 +31,10 @@ function Index() {
             {projects.map((p, i) => (
               <tr key={i}>
                 <td>{p.year}</td>
-                <td>{p.project}</td>
+                <td>
+                  {p.project}
+                  {p.ai && <img src={claudeIcon} alt="Built with AI" className="claude-icon" />}
+                </td>
                 <td className={p.status === 'Coming Soon' ? 'status-coming-soon' : ''}>
                   {p.status}
                 </td>
