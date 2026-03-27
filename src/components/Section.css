@@ -1,5 +1,7 @@
 .section {
   display: flex;
+  max-width: 1900px;
+  margin: 0 auto;
 }
 
 .col-left {

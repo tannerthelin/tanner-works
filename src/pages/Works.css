@@ -1,5 +1,7 @@
 .works-grid {
   padding: var(--grid-pad);
+  max-width: 1900px;
+  margin: 0 auto;
 }
 
 .grid {

@@ -1,5 +1,7 @@
 .index-list {
   padding: var(--pad);
+  max-width: 1900px;
+  margin: 0 auto;
 }
 
 .project-table {
