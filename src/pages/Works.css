@@ -1,3 +1,17 @@
+.hero-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 200px var(--pad);
+  max-width: 1900px;
+  margin: 0 auto;
+}
+
+.hero-centered .headline p {
+  max-width: 550px;
+}
+
 .works-grid {
   padding: var(--grid-pad);
   max-width: 1900px;

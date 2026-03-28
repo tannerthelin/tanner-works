@@ -14,23 +14,16 @@ function Works() {
     <div className="page">
       <Nav />
 
-      <Section
-        className="hero-section"
-        left={null}
-        right={
-          <div className="headline">
-            <p>
-              Designer who builds. Based in Salt Lake City with a background in agencies & early-stage startups.
-              <br />
-              <br />
-              Currently Head of Design at{' '}
-              <a href="https://www.joinleland.com" className="headline-link" target="_blank" rel="noopener noreferrer">
-                Leland
-              </a>.
-            </p>
-          </div>
-        }
-      />
+      <section className="hero-centered">
+        <div className="headline">
+          <p>
+            Tanner is a Product Designer in Salt Lake City. Currently Head of Design at{' '}
+            <a href="https://www.joinleland.com" className="headline-link" target="_blank" rel="noopener noreferrer">
+              Leland
+            </a>.
+          </p>
+        </div>
+      </section>
 
       <section className="works-grid">
         <div className="grid">
