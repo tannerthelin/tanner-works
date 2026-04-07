@@ -5,11 +5,11 @@ import playloggedLogo from '../assets/html-mockups/playlogged-mockup/playlogged-
 import dotsMenuIcon from '../assets/icons/dots-menu.svg'
 
 const images = Object.entries(
-  import.meta.glob('../assets/works-img/*', { eager: true, import: 'default' })
+  import.meta.glob('../assets/works-img/*.{png,jpg,jpeg,gif,webp,svg}', { eager: true, import: 'default' })
 ).map(([path, src]) => ({
   src,
   name: path.split('/').pop().replace(/\.[^.]+$/, ''),
-}))
+})).sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }))
 
 const gameImages = Object.entries(
   import.meta.glob('../assets/html-mockups/playlogged-mockup/game-images/*', { eager: true, import: 'default' })
