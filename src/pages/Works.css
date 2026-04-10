@@ -186,3 +186,17 @@
 .pl-dots-menu:hover {
   opacity: 0.55;
 }
+
+/* TrueInsight mockup */
+
+.ti-inner {
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ti-video {
+  height: 85%;
+  display: block;
+}

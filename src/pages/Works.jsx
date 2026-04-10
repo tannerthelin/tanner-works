@@ -3,6 +3,7 @@ import Section from '../components/Section.jsx'
 import './Works.css'
 import playloggedLogo from '../assets/html-mockups/playlogged-mockup/playlogged-logo.svg'
 import dotsMenuIcon from '../assets/icons/dots-menu.svg'
+import trueinsightVideo from '../assets/html-mockups/trueinsight/cropped.mov'
 
 const images = Object.entries(
   import.meta.glob('../assets/works-img/*.{png,jpg,jpeg,gif,webp,svg}', { eager: true, import: 'default' })
@@ -77,7 +78,28 @@ function Works() {
             </div>
           </div>
 
-          {images.slice(4).map((img) => (
+          {images.slice(4, 8).map((img) => (
+            <div className="grid-item" key={img.name}>
+              <img src={img.src} alt={img.name} className="grid-image" />
+            </div>
+          ))}
+
+          <div className="grid-item">
+            <div className="featured-work">
+              <div className="featured-work-inner ti-inner">
+                <video
+                  src={trueinsightVideo}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="ti-video"
+                />
+              </div>
+            </div>
+          </div>
+
+          {images.slice(8).map((img) => (
             <div className="grid-item" key={img.name}>
               <img src={img.src} alt={img.name} className="grid-image" />
             </div>
