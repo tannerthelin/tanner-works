@@ -1,19 +1,5 @@
 [
   {
-    "id": "leland-rebrand",
-    "title": "Leland Rebrand",
-    "description": "A complete brand identity refresh for Leland, redefining the visual language across product and marketing.",
-    "year": "2026",
-    "client": "Leland",
-    "status": "Coming Soon",
-    "images": [
-      { "label": "Brand exploration", "src": null },
-      { "label": "Typography system", "src": null },
-      { "label": "Color palette", "src": null },
-      { "label": "Brand guidelines", "src": null }
-    ]
-  },
-  {
     "id": "playlogged",
     "title": "Playlogged",
     "description": "A game logging and social app designed from the ground up — identity, product, and interaction design.",
@@ -22,10 +8,22 @@
     "link": "/playlogged",
     "ai": true,
     "images": [
-      { "label": "App — home", "src": null },
-      { "label": "App — profile", "src": null },
-      { "label": "App — log entry", "src": null },
-      { "label": "App — search", "src": null }
+      {
+        "label": "App — home",
+        "src": null
+      },
+      {
+        "label": "App — profile",
+        "src": null
+      },
+      {
+        "label": "App — log entry",
+        "src": null
+      },
+      {
+        "label": "App — search",
+        "src": null
+      }
     ]
   },
   {
@@ -36,10 +34,22 @@
     "client": "Leland",
     "link": "/leland-product",
     "images": [
-      { "label": "Dashboard — overview", "src": null },
-      { "label": "Coach profile", "src": null },
-      { "label": "Booking flow", "src": null },
-      { "label": "Mobile — home", "src": null }
+      {
+        "label": "Dashboard — overview",
+        "src": null
+      },
+      {
+        "label": "Coach profile",
+        "src": null
+      },
+      {
+        "label": "Booking flow",
+        "src": null
+      },
+      {
+        "label": "Mobile — home",
+        "src": null
+      }
     ]
   },
   {
@@ -50,9 +60,18 @@
     "client": "Freelance",
     "status": "Coming Soon",
     "images": [
-      { "label": "Logo design", "src": null },
-      { "label": "Brand collateral", "src": null },
-      { "label": "Signage", "src": null }
+      {
+        "label": "Logo design",
+        "src": null
+      },
+      {
+        "label": "Brand collateral",
+        "src": null
+      },
+      {
+        "label": "Signage",
+        "src": null
+      }
     ]
   },
   {
@@ -63,10 +82,22 @@
     "client": "Freelance",
     "status": "Coming Soon",
     "images": [
-      { "label": "Product — dashboard", "src": null },
-      { "label": "Product — detail", "src": null },
-      { "label": "Product — settings", "src": null },
-      { "label": "Mobile — overview", "src": null }
+      {
+        "label": "Product — dashboard",
+        "src": null
+      },
+      {
+        "label": "Product — detail",
+        "src": null
+      },
+      {
+        "label": "Product — settings",
+        "src": null
+      },
+      {
+        "label": "Mobile — overview",
+        "src": null
+      }
     ]
   }
 ]
