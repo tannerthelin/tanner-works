@@ -91,9 +91,22 @@
   {
     "id": "sunrun-design",
     "title": "Sunrun Design",
-    "description": "This is a test of the project functionality.",
+    "description": "Some stuff I did for the Sunrun team, both externally and internally.",
     "year": "2026",
     "client": "Sunrun",
-    "images": []
+    "images": [
+      {
+        "label": "Sunrun 1",
+        "src": "/images/work/sunrun-design/Sunrun 1.png"
+      },
+      {
+        "label": "Sunrun 2",
+        "src": "/images/work/sunrun-design/Sunrun 2.png"
+      },
+      {
+        "label": "Sunrun 3",
+        "src": "/images/work/sunrun-design/Sunrun 3.png"
+      }
+    ]
   }
 ]
