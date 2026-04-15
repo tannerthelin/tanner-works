@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { Reorder, useDragControls } from 'motion/react'
 import { validateToken, saveProjects } from '../lib/github.js'
 import './Edit.css'
 
@@ -85,7 +86,18 @@ function EditModal({ project, onSave, onCancel, onDelete, saving }) {
   const [pendingUploads, setPendingUploads] = useState([])
   const [pendingDeletes, setPendingDeletes] = useState([])
   const [sizeWarnings, setSizeWarnings] = useState([])
+  const [closing, setClosing] = useState(false)
+  const [entered, setEntered] = useState(false)
   const fileRef = useRef()
+
+  useEffect(() => {
+    requestAnimationFrame(() => setEntered(true))
+  }, [])
+
+  function handleClose() {
+    setClosing(true)
+    setTimeout(onCancel, 200)
+  }
 
   function set(key, val) {
     setForm(f => ({ ...f, [key]: val }))
@@ -160,18 +172,19 @@ function EditModal({ project, onSave, onCancel, onDelete, saving }) {
   const isNew = !project.id
 
   return (
-    <div className="edit-modal-overlay" onClick={onCancel}>
-      <div className="edit-modal" onClick={e => e.stopPropagation()}>
+    <div className={`edit-modal-overlay${entered && !closing ? ' entered' : ''}`} onClick={handleClose}>
+      <div className={`edit-modal${entered && !closing ? ' entered' : ''}`} onClick={e => e.stopPropagation()}>
         <h2>{isNew ? 'New Project' : `Edit — ${project.title}`}</h2>
 
-        <div className="edit-form-group">
-          <label className="edit-form-label">Year</label>
-          <input className="edit-input" value={form.year || ''} onChange={e => set('year', e.target.value)} />
-        </div>
-
-        <div className="edit-form-group">
-          <label className="edit-form-label">Client</label>
-          <input className="edit-input" value={form.client || ''} onChange={e => set('client', e.target.value)} />
+        <div className="edit-form-row">
+          <div className="edit-form-group">
+            <label className="edit-form-label">Year</label>
+            <input className="edit-input" value={form.year || ''} onChange={e => set('year', e.target.value)} />
+          </div>
+          <div className="edit-form-group">
+            <label className="edit-form-label">Client</label>
+            <input className="edit-input" value={form.client || ''} onChange={e => set('client', e.target.value)} />
+          </div>
         </div>
 
         <div className="edit-form-group">
@@ -184,21 +197,15 @@ function EditModal({ project, onSave, onCancel, onDelete, saving }) {
           <textarea className="edit-input edit-textarea" value={form.description || ''} onChange={e => set('description', e.target.value)} />
         </div>
 
-        <div className="edit-form-group">
-          <label className="edit-form-label">Status</label>
-          <input className="edit-input" value={form.status || ''} onChange={e => set('status', e.target.value)} placeholder="e.g. Coming Soon" />
-        </div>
-
-        <div className="edit-form-group">
-          <label className="edit-form-label">Link</label>
-          <input className="edit-input" value={form.link || ''} onChange={e => set('link', e.target.value)} placeholder="e.g. /playlogged" />
-        </div>
-
-        <div className="edit-form-group">
-          <label className="edit-checkbox-row">
-            <input type="checkbox" checked={!!form.ai} onChange={e => set('ai', e.target.checked)} />
-            Built with AI
-          </label>
+        <div className="edit-form-row">
+          <div className="edit-form-group">
+            <label className="edit-form-label">Status</label>
+            <input className="edit-input" value={form.status || ''} onChange={e => set('status', e.target.value)} placeholder="e.g. Coming Soon" />
+          </div>
+          <div className="edit-form-group">
+            <label className="edit-form-label">Link</label>
+            <input className="edit-input" value={form.link || ''} onChange={e => set('link', e.target.value)} placeholder="e.g. /playlogged" />
+          </div>
         </div>
 
         <div className="edit-form-group">
@@ -210,12 +217,6 @@ function EditModal({ project, onSave, onCancel, onDelete, saving }) {
                   {img.src && <img src={img.src} alt={img.label} />}
                 </div>
                 <button className="edit-image-delete" onClick={() => removeImage(i)}>×</button>
-                <input
-                  className="edit-image-label-input"
-                  value={img.label}
-                  onChange={e => updateImageLabel(i, e.target.value)}
-                  placeholder="Label"
-                />
               </div>
             ))}
             <div className="edit-image-add" onClick={() => fileRef.current.click()}>+</div>
@@ -236,7 +237,7 @@ function EditModal({ project, onSave, onCancel, onDelete, saving }) {
         <div className="edit-modal-actions">
           {!isNew && (
             <button
-              className="edit-btn-danger"
+              className="edit-modal-link-btn"
               disabled={saving}
               onClick={() => {
                 if (confirm(`Delete "${project.title}"? This cannot be undone.`)) {
@@ -244,12 +245,12 @@ function EditModal({ project, onSave, onCancel, onDelete, saving }) {
                 }
               }}
             >
-              Delete Project
+              Delete
             </button>
           )}
           <div className="edit-modal-actions-right">
-            <button className="edit-btn-ghost" onClick={onCancel} disabled={saving} style={{ marginRight: 12 }}>Cancel</button>
-            <button className="edit-btn-primary" onClick={handleSave} disabled={saving}>
+            <button className="edit-modal-link-btn" onClick={handleClose} disabled={saving}>Cancel</button>
+            <button className="edit-modal-link-btn" onClick={handleSave} disabled={saving}>
               {saving ? 'Saving...' : 'Save'}
             </button>
           </div>
@@ -259,11 +260,30 @@ function EditModal({ project, onSave, onCancel, onDelete, saving }) {
   )
 }
 
+function ProjectRow({ project, onEdit }) {
+  const controls = useDragControls()
+  return (
+    <Reorder.Item value={project} className="edit-project-card" dragListener={false} dragControls={controls}>
+      <div className="edit-project-drag-handle" onPointerDown={e => controls.start(e)}>
+        <svg viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fillRule="evenodd" clipRule="evenodd" d="M9.5 8C10.3284 8 11 7.32843 11 6.5C11 5.67157 10.3284 5 9.5 5C8.67157 5 8 5.67157 8 6.5C8 7.32843 8.67157 8 9.5 8ZM9.5 14C10.3284 14 11 13.3284 11 12.5C11 11.6716 10.3284 11 9.5 11C8.67157 11 8 11.6716 8 12.5C8 13.3284 8.67157 14 9.5 14ZM11 18.5C11 19.3284 10.3284 20 9.5 20C8.67157 20 8 19.3284 8 18.5C8 17.6716 8.67157 17 9.5 17C10.3284 17 11 17.6716 11 18.5ZM15.5 8C16.3284 8 17 7.32843 17 6.5C17 5.67157 16.3284 5 15.5 5C14.6716 5 14 5.67157 14 6.5C14 7.32843 14.6716 8 15.5 8ZM17 12.5C17 13.3284 16.3284 14 15.5 14C14.6716 14 14 13.3284 14 12.5C14 11.6716 14.6716 11 15.5 11C16.3284 11 17 11.6716 17 12.5ZM15.5 20C16.3284 20 17 19.3284 17 18.5C17 17.6716 16.3284 17 15.5 17C14.6716 17 14 17.6716 14 18.5C14 19.3284 14.6716 20 15.5 20Z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div className="edit-project-card-info">
+        <span>{project.title}</span>
+        <span className="edit-project-card-meta">{project.year} — {project.client}</span>
+      </div>
+      <button className="edit-project-edit-btn" onClick={() => onEdit(project)}>Edit</button>
+    </Reorder.Item>
+  )
+}
+
 function Edit() {
   const [authed, setAuthed] = useState(false)
   const [token, setToken] = useState(localStorage.getItem('gh_token') || '')
   const [tokenReady, setTokenReady] = useState(false)
   const [projects, setProjects] = useState(null)
+  const [savedOrder, setSavedOrder] = useState(null)
   const [editing, setEditing] = useState(null)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
@@ -283,9 +303,29 @@ function Edit() {
     if (!authed) return
     fetch(`/data/projects.json?t=${Date.now()}`)
       .then(res => res.json())
-      .then(setProjects)
-      .catch(() => setProjects([]))
+      .then(data => { setProjects(data); setSavedOrder(data) })
+      .catch(() => { setProjects([]); setSavedOrder([]) })
   }, [authed])
+
+  const orderChanged = projects && savedOrder &&
+    projects.map(p => p.id).join(',') !== savedOrder.map(p => p.id).join(',')
+
+  function cancelReorder() {
+    setProjects(savedOrder)
+  }
+
+  async function saveReorder() {
+    setSaving(true)
+    setError('')
+    try {
+      await saveProjects(token, projects, [], [])
+      setSavedOrder(projects)
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setSaving(false)
+    }
+  }
 
   function clearToken() {
     localStorage.removeItem('gh_token')
@@ -323,6 +363,7 @@ function Edit() {
 
       await saveProjects(token, updated, imagesToUpload, imagesToDelete)
       setProjects(updated)
+      setSavedOrder(updated)
       setEditing(null)
     } catch (err) {
       setError(err.message)
@@ -343,6 +384,7 @@ function Edit() {
 
       await saveProjects(token, updated, [], imagesToDelete)
       setProjects(updated)
+      setSavedOrder(updated)
       setEditing(null)
     } catch (err) {
       setError(err.message)
@@ -380,23 +422,24 @@ function Edit() {
           <p style={{ opacity: 0.4 }}>Loading...</p>
         ) : (
           <>
-            <div className="edit-project-list">
+            <Reorder.Group axis="y" values={projects} onReorder={setProjects} className="edit-project-list">
               {projects.map(project => (
-                <button
-                  key={project.id}
-                  className="edit-project-card"
-                  onClick={() => setEditing(project)}
-                >
-                  <div className="edit-project-card-info">
-                    <span>{project.title}</span>
-                    <span className="edit-project-card-meta">{project.year} — {project.client}</span>
-                  </div>
-                </button>
+                <ProjectRow key={project.id} project={project} onEdit={setEditing} />
               ))}
+            </Reorder.Group>
+
+            <div className={`edit-reorder-actions${orderChanged ? ' visible' : ''}`}>
+              <div className="edit-reorder-actions-inner">
+                <button onClick={cancelReorder} disabled={saving}>Cancel</button>
+                <button onClick={saveReorder} disabled={saving}>
+                  {saving ? 'Saving...' : 'Save Order'}
+                </button>
+              </div>
             </div>
 
             <button
               className="edit-btn-ghost edit-add-btn"
+              disabled={orderChanged}
               onClick={() => setEditing({
                 id: '',
                 title: '',
