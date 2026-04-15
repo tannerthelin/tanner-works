@@ -22,6 +22,32 @@
     ]
   },
   {
+    "id": "titan-product",
+    "title": "Titan Product",
+    "description": "End-to-end product design for Titan, shaping the interface and user experience from concept to delivery.",
+    "year": "2025",
+    "client": "Freelance",
+    "status": "Coming Soon",
+    "images": [
+      {
+        "label": "Product — dashboard",
+        "src": null
+      },
+      {
+        "label": "Product — detail",
+        "src": null
+      },
+      {
+        "label": "Product — settings",
+        "src": null
+      },
+      {
+        "label": "Mobile — overview",
+        "src": null
+      }
+    ]
+  },
+  {
     "id": "playlogged",
     "title": "Playlogged",
     "description": "A game logging and social app designed from the ground up — identity, product, and interaction design.",
@@ -66,32 +92,6 @@
       },
       {
         "label": "Signage",
-        "src": null
-      }
-    ]
-  },
-  {
-    "id": "titan-product",
-    "title": "Titan Product",
-    "description": "End-to-end product design for Titan, shaping the interface and user experience from concept to delivery.",
-    "year": "2025",
-    "client": "Freelance",
-    "status": "Coming Soon",
-    "images": [
-      {
-        "label": "Product — dashboard",
-        "src": null
-      },
-      {
-        "label": "Product — detail",
-        "src": null
-      },
-      {
-        "label": "Product — settings",
-        "src": null
-      },
-      {
-        "label": "Mobile — overview",
         "src": null
       }
     ]
