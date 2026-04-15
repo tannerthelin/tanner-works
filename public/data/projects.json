@@ -1,5 +1,31 @@
 [
   {
+    "id": "leland-product",
+    "title": "Leland Product",
+    "description": "Redesigning the core product experience for Leland's coaching marketplace, improving usability and conversion.",
+    "year": "2025",
+    "client": "Leland",
+    "link": "/leland-product",
+    "images": [
+      {
+        "label": "Dashboard — overview",
+        "src": null
+      },
+      {
+        "label": "Coach profile",
+        "src": null
+      },
+      {
+        "label": "Booking flow",
+        "src": null
+      },
+      {
+        "label": "Mobile — home",
+        "src": null
+      }
+    ]
+  },
+  {
     "id": "playlogged",
     "title": "Playlogged",
     "description": "A game logging and social app designed from the ground up — identity, product, and interaction design.",
@@ -22,32 +48,6 @@
       },
       {
         "label": "App — search",
-        "src": null
-      }
-    ]
-  },
-  {
-    "id": "leland-product",
-    "title": "Leland Product",
-    "description": "Redesigning the core product experience for Leland's coaching marketplace, improving usability and conversion.",
-    "year": "2025",
-    "client": "Leland",
-    "link": "/leland-product",
-    "images": [
-      {
-        "label": "Dashboard — overview",
-        "src": null
-      },
-      {
-        "label": "Coach profile",
-        "src": null
-      },
-      {
-        "label": "Booking flow",
-        "src": null
-      },
-      {
-        "label": "Mobile — home",
         "src": null
       }
     ]
