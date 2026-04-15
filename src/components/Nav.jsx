@@ -17,7 +17,7 @@ function Nav() {
         </Link>
       </div>
       <div className="nav-center">
-        <NavLink to="/" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+        <NavLink to="/" end className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
           Work
         </NavLink>
         <NavLink to="/about" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>

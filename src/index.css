@@ -14,6 +14,15 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Departure Mono';
+  src: url('./assets/fonts/Departure Mono/DepartureMono-Regular.woff2') format('woff2'),
+       url('./assets/fonts/Departure Mono/DepartureMono-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --color-text: #1a1a2e;
   --color-bg: #ffffff;
@@ -21,6 +30,7 @@
   --color-border: #e0e0e0;
   --color-indicator: #1a1a2e;
   --font-body: 'CustomFont', 'Inter', sans-serif;
+  --font-mono: 'Departure Mono', monospace;
   --nav-size: 20px;
   --headline-size: 26px;
   --pad: 30px;

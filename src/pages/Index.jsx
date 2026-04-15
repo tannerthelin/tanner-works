@@ -1,51 +1,84 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav.jsx'
-import Section from '../components/Section.jsx'
+import useDragScroll from '../hooks/useDragScroll.js'
 import claudeIcon from '../assets/claude.svg'
 import './Index.css'
 
-const projects = [
-  { year: '2026', project: 'Leland Rebrand', status: 'Coming Soon', client: 'Leland' },
-  { year: '2026', project: 'Playlogged App', link: '/playlogged', client: 'Personal', ai: true },
-  { year: '2025', project: 'Leland Product', link: '/leland-product', client: 'Leland' },
-  { year: '2025', project: 'Riverwoods Brand', status: 'Coming Soon', client: 'Freelance' },
-  { year: '2024', project: 'Titan Product', status: 'Coming Soon', client: 'Freelance' },
-]
+function ScrollGallery({ images }) {
+  const scrollRef = useDragScroll()
+  return (
+    <div className="work-project-images">
+      <div className="work-project-scroll" ref={scrollRef}>
+        {images.map((img, j) => (
+          <div key={j} className="work-image-card">
+            <div className="work-image-placeholder">
+              {img.src ? (
+                <img src={img.src} alt={img.label} draggable={false} />
+              ) : null}
+            </div>
+            <span className="work-image-label">{img.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
 
 function Index() {
+  const [projects, setProjects] = useState(null)
+
+  useEffect(() => {
+    fetch(`/data/projects.json?t=${Date.now()}`)
+      .then(res => res.json())
+      .then(setProjects)
+      .catch(() => setProjects([]))
+  }, [])
+
+  if (!projects) {
+    return (
+      <div className="page">
+        <Nav />
+      </div>
+    )
+  }
+
   return (
     <div className="page">
       <Nav />
 
-      <Section
-        className="hero-section"
-        left={null}
-        right={
-          <div className="headline">
-            <p>A chronological index of selected projects, 2020 – present.</p>
-          </div>
-        }
-      />
+      <header className="work-header">
+        <div className="headline">
+          <p>A chronological index of selected projects, 2020 – present.</p>
+        </div>
+      </header>
 
-      <section className="index-list">
-        <table className="project-table">
-          <tbody>
-            {projects.map((p, i) => (
-              <tr key={i}>
-                <td>{p.year}</td>
-                <td>
-                  {p.link ? <Link to={p.link}>{p.project}</Link> : p.project}
-                  {p.ai && <img src={claudeIcon} alt="Built with AI" className="claude-icon" />}
-                </td>
-                <td className={p.status === 'Coming Soon' ? 'status-coming-soon' : ''}>
-                  {p.link ? <Link to={p.link}>View</Link> : p.status}
-                </td>
-                <td>{p.client}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </section>
+      <div className="work-projects">
+        {projects.map((project, i) => (
+          <section key={project.id || i} className="work-project">
+            <div className="work-project-info">
+              <div className="work-project-meta">
+                <span>{project.year}</span>
+                <span>{project.client}</span>
+              </div>
+              <h2 className="work-project-title">
+                {project.title}
+                {project.ai && <img src={claudeIcon} alt="Built with AI" className="claude-icon" />}
+              </h2>
+              <p className="work-project-desc">{project.description}</p>
+              {project.link ? (
+                <Link to={project.link} className="work-project-link">
+                  View case study
+                </Link>
+              ) : project.status ? (
+                <span className="work-project-status">{project.status}</span>
+              ) : null}
+            </div>
+
+            <ScrollGallery images={project.images} />
+          </section>
+        ))}
+      </div>
     </div>
   )
 }
