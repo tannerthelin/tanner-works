@@ -30,20 +30,12 @@
     "status": "Coming Soon",
     "images": [
       {
-        "label": "Product — dashboard",
-        "src": null
+        "label": "Mobile Screens",
+        "src": "/images/work/titan-product/Titan 1.png"
       },
       {
-        "label": "Product — detail",
-        "src": null
-      },
-      {
-        "label": "Product — settings",
-        "src": null
-      },
-      {
-        "label": "Mobile — overview",
-        "src": null
+        "label": "Mobile Dashboard",
+        "src": "/images/work/titan-product/Titan 2.png"
       }
     ]
   },
