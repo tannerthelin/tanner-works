@@ -87,5 +87,13 @@
         "src": null
       }
     ]
+  },
+  {
+    "id": "sunrun-design",
+    "title": "Sunrun Design",
+    "description": "This is a test of the project functionality.",
+    "year": "2026",
+    "client": "Sunrun",
+    "images": []
   }
 ]
