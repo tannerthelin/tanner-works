@@ -8,20 +8,16 @@
     "link": "/leland-product",
     "images": [
       {
-        "label": "Dashboard — overview",
-        "src": null
+        "label": "Leland-1",
+        "src": "/images/work/leland-product/Leland-1.png"
       },
       {
-        "label": "Coach profile",
-        "src": null
+        "label": "Leland-2",
+        "src": "/images/work/leland-product/Leland-2.png"
       },
       {
-        "label": "Booking flow",
-        "src": null
-      },
-      {
-        "label": "Mobile — home",
-        "src": null
+        "label": "Leland-3",
+        "src": "/images/work/leland-product/Leland-3.png"
       }
     ]
   },
