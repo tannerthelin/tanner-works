@@ -114,7 +114,44 @@
   opacity: 0.6;
 }
 
-.edit-token-bar button {
+.edit-theme-toggle {
+  margin-left: auto;
+  background: rgba(241, 242, 246, 0.5);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+  text-decoration: none !important;
+  text-transform: none !important;
+  opacity: 1 !important;
+}
+
+.edit-theme-toggle:hover {
+  background: rgba(241, 242, 246, 1);
+}
+
+.edit-theme-toggle img {
+  width: 18px;
+  height: 18px;
+}
+
+[data-theme="dark"] .edit-theme-toggle {
+  background: rgba(42, 42, 42, 0.5);
+}
+
+[data-theme="dark"] .edit-theme-toggle:hover {
+  background: rgba(42, 42, 42, 1);
+}
+
+[data-theme="dark"] .edit-theme-toggle img {
+  filter: invert(1);
+}
+
+.edit-token-bar button:not(.edit-theme-toggle) {
   font-size: 10px;
   font-family: inherit;
   color: var(--color-text);

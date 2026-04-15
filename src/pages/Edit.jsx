@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import { Reorder, useDragControls } from 'motion/react'
+import { useTheme } from '../context/ThemeContext.jsx'
 import { validateToken, saveProjects } from '../lib/github.js'
+import sunIcon from '../assets/icons/sun.svg'
+import moonIcon from '../assets/icons/moon.svg'
 import './Edit.css'
 
 const PASSWORD = 'sundance'
@@ -279,6 +282,7 @@ function ProjectRow({ project, onEdit }) {
 }
 
 function Edit() {
+  const { theme, toggleTheme } = useTheme()
   const [authed, setAuthed] = useState(false)
   const [token, setToken] = useState(localStorage.getItem('gh_token') || '')
   const [tokenReady, setTokenReady] = useState(false)
@@ -318,7 +322,7 @@ function Edit() {
     setSaving(true)
     setError('')
     try {
-      await saveProjects(token, projects, [], [])
+      await saveProjects(token, projects, [], [], 'Project reorder')
       setSavedOrder(projects)
     } catch (err) {
       setError(err.message)
@@ -361,7 +365,10 @@ function Edit() {
         return clean
       })
 
-      await saveProjects(token, updated, imagesToUpload, imagesToDelete)
+      const message = idx >= 0
+        ? `Update project: ${updatedProject.title}`
+        : `Add project: ${updatedProject.title}`
+      await saveProjects(token, updated, imagesToUpload, imagesToDelete, message)
       setProjects(updated)
       setSavedOrder(updated)
       setEditing(null)
@@ -382,7 +389,7 @@ function Edit() {
         .filter(img => img.src)
         .map(img => ({ path: img.src, filename: img.src.split('/').pop() }))
 
-      await saveProjects(token, updated, [], imagesToDelete)
+      await saveProjects(token, updated, [], imagesToDelete, `Delete project: ${project.title}`)
       setProjects(updated)
       setSavedOrder(updated)
       setEditing(null)
@@ -411,6 +418,9 @@ function Edit() {
       <div className="edit-token-bar">
         <span>Token: ••••{token.slice(-4)}</span>
         <button onClick={clearToken}>Clear</button>
+        <button className="edit-theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+          <img src={theme === 'light' ? sunIcon : moonIcon} alt="" />
+        </button>
       </div>
 
       <div className="edit-page">
