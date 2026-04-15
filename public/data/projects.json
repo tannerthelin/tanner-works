@@ -8,15 +8,15 @@
     "link": "/leland-product",
     "images": [
       {
-        "label": "Leland-1",
+        "label": "Homepage",
         "src": "/images/work/leland-product/Leland-1.png"
       },
       {
-        "label": "Leland-2",
+        "label": "Coach Profile",
         "src": "/images/work/leland-product/Leland-2.png"
       },
       {
-        "label": "Leland-3",
+        "label": "Design System",
         "src": "/images/work/leland-product/Leland-3.png"
       }
     ]
