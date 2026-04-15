@@ -85,7 +85,12 @@ function TokenSetup({ onReady }) {
 
 function EditModal({ project, onSave, onCancel, onDelete, saving }) {
   const [form, setForm] = useState({ ...project })
-  const [images, setImages] = useState(project.images.map(img => ({ ...img })))
+  const [images, setImages] = useState(() =>
+    project.images.map((img, i) => ({
+      ...img,
+      _id: `img-${i}-${img.src || img.label || 'empty'}`,
+    }))
+  )
   const [pendingUploads, setPendingUploads] = useState([])
   const [pendingDeletes, setPendingDeletes] = useState([])
   const [sizeWarnings, setSizeWarnings] = useState([])
@@ -124,11 +129,12 @@ function EditModal({ project, onSave, onCancel, onDelete, saving }) {
 
     setSizeWarnings(warnings)
 
-    const newImages = accepted.map(file => ({
+    const newImages = accepted.map((file, i) => ({
       label: file.name.replace(/\.[^.]+$/, ''),
       src: URL.createObjectURL(file),
       _file: file,
       _isNew: true,
+      _id: `new-${Date.now()}-${i}`,
     }))
 
     setImages(prev => [...prev, ...newImages])
@@ -144,19 +150,18 @@ function EditModal({ project, onSave, onCancel, onDelete, saving }) {
     e.target.value = ''
   }
 
-  function removeImage(index) {
-    const img = images[index]
-    if (!img._isNew && img.src) {
-      setPendingDeletes(prev => [...prev, { path: img.src, filename: img.src.split('/').pop() }])
+  function removeImage(imageToRemove) {
+    if (!imageToRemove._isNew && imageToRemove.src) {
+      setPendingDeletes(prev => [...prev, { path: imageToRemove.src, filename: imageToRemove.src.split('/').pop() }])
     }
-    if (img._isNew) {
-      setPendingUploads(prev => prev.filter(u => u.filename !== img._file.name))
+    if (imageToRemove._isNew) {
+      setPendingUploads(prev => prev.filter(u => u.filename !== imageToRemove._file.name))
     }
-    setImages(prev => prev.filter((_, i) => i !== index))
+    setImages(prev => prev.filter(img => img._id !== imageToRemove._id))
   }
 
-  function updateImageLabel(index, label) {
-    setImages(prev => prev.map((img, i) => i === index ? { ...img, label } : img))
+  function updateImageLabel(imageToUpdate, label) {
+    setImages(prev => prev.map(img => img._id === imageToUpdate._id ? { ...img, label } : img))
   }
 
   function handleSave() {
@@ -213,17 +218,23 @@ function EditModal({ project, onSave, onCancel, onDelete, saving }) {
 
         <div className="edit-form-group">
           <label className="edit-form-label">Images</label>
-          <div className="edit-image-grid">
-            {images.map((img, i) => (
-              <div key={i} className="edit-image-item">
-                <div className="edit-image-thumb">
-                  {img.src && <img src={img.src} alt={img.label} />}
-                </div>
-                <button className="edit-image-delete" onClick={() => removeImage(i)}>×</button>
-              </div>
+          <Reorder.Group
+            as="div"
+            axis="y"
+            values={images}
+            onReorder={setImages}
+            className="edit-image-grid"
+          >
+            {images.map(img => (
+              <ImageItem
+                key={img._id}
+                image={img}
+                onRemove={() => removeImage(img)}
+                onLabelChange={label => updateImageLabel(img, label)}
+              />
             ))}
             <div className="edit-image-add" onClick={() => fileRef.current.click()}>+</div>
-          </div>
+          </Reorder.Group>
           {sizeWarnings.map((w, i) => (
             <p key={i} className="edit-image-warning">{w}</p>
           ))}
@@ -260,6 +271,40 @@ function EditModal({ project, onSave, onCancel, onDelete, saving }) {
         </div>
       </div>
     </div>
+  )
+}
+
+function ImageItem({ image, onRemove, onLabelChange }) {
+  const controls = useDragControls()
+  return (
+    <Reorder.Item
+      as="div"
+      value={image}
+      className="edit-image-item"
+      dragListener={false}
+      dragControls={controls}
+    >
+      <div
+        className="edit-image-thumb"
+        onPointerDown={e => controls.start(e)}
+      >
+        {image.src && <img src={image.src} alt={image.label} draggable={false} />}
+      </div>
+      <button
+        type="button"
+        className="edit-image-delete"
+        onClick={onRemove}
+      >
+        ×
+      </button>
+      <input
+        type="text"
+        className="edit-image-label-input"
+        value={image.label || ''}
+        onChange={e => onLabelChange(e.target.value)}
+        placeholder="Label"
+      />
+    </Reorder.Item>
   )
 }
 
