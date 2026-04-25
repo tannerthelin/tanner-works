@@ -4,6 +4,7 @@ import './Works.css'
 import playloggedLogo from '../assets/html-mockups/playlogged-mockup/playlogged-logo.svg'
 import dotsMenuIcon from '../assets/icons/dots-menu.svg'
 import trueinsightVideo from '../assets/html-mockups/trueinsight/cropped.mov'
+import lelandVideo from '../assets/works-img/leland-recording-1.mov'
 
 const images = Object.entries(
   import.meta.glob('../assets/works-img/*.{png,jpg,jpeg,gif,webp,svg}', { eager: true, import: 'default' })
@@ -47,7 +48,22 @@ function Works() {
 
       <section className="works-grid">
         <div className="grid">
-          {images.slice(0, 4).map((img) => (
+          <div className="grid-item">
+            <div className="featured-work">
+              <div className="featured-work-inner leland-inner">
+                <video
+                  src={lelandVideo}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="leland-video"
+                />
+              </div>
+            </div>
+          </div>
+
+          {images.slice(1, 5).map((img) => (
             <div className="grid-item" key={img.name}>
               <img src={img.src} alt={img.name} className="grid-image" />
             </div>
@@ -78,7 +94,7 @@ function Works() {
             </div>
           </div>
 
-          {images.slice(4, 8).map((img) => (
+          {images.slice(5, 9).map((img) => (
             <div className="grid-item" key={img.name}>
               <img src={img.src} alt={img.name} className="grid-image" />
             </div>
@@ -99,7 +115,7 @@ function Works() {
             </div>
           </div>
 
-          {images.slice(8).map((img) => (
+          {images.slice(9).map((img) => (
             <div className="grid-item" key={img.name}>
               <img src={img.src} alt={img.name} className="grid-image" />
             </div>
