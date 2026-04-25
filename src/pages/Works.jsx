@@ -63,7 +63,22 @@ function Works() {
             </div>
           </div>
 
-          {images.slice(1, 5).map((img) => (
+          <div className="grid-item">
+            <div className="featured-work">
+              <div className="featured-work-inner ti-inner">
+                <video
+                  src={trueinsightVideo}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="ti-video"
+                />
+              </div>
+            </div>
+          </div>
+
+          {images.slice(2, 5).map((img) => (
             <div className="grid-item" key={img.name}>
               <img src={img.src} alt={img.name} className="grid-image" />
             </div>
@@ -100,19 +115,8 @@ function Works() {
             </div>
           ))}
 
-          <div className="grid-item">
-            <div className="featured-work">
-              <div className="featured-work-inner ti-inner">
-                <video
-                  src={trueinsightVideo}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="ti-video"
-                />
-              </div>
-            </div>
+          <div className="grid-item" key={images[1]?.name}>
+            <img src={images[1]?.src} alt={images[1]?.name} className="grid-image" />
           </div>
 
           {images.slice(9).map((img) => (
