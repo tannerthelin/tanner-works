@@ -265,6 +265,7 @@
   color: #707070;
   white-space: nowrap;
   flex-shrink: 0;
+  line-height: 4.167cqi;
   transition: color 0.2s, font-weight 0.2s !important;
 }
 
@@ -307,6 +308,8 @@
   background: transparent;
   padding: 0;
   position: relative;
+  height: 4.167cqi;
+  line-height: 4.167cqi;
 }
 
 .lm-search-btn {
