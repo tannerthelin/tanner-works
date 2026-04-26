@@ -40,7 +40,7 @@ const SLIDES = [
   },
 ]
 
-const INTERVAL = 4000
+const INTERVAL = 4500
 
 const GOALS = [
   'get an MBA',

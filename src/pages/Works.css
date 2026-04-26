@@ -88,7 +88,7 @@
   width: 7cqi;
   aspect-ratio: 206 / 284;
   object-fit: cover;
-  border-radius: 6px;
+  border-radius: 0.556cqi;
   display: block;
   flex-shrink: 0;
   opacity: 0.15;
@@ -105,11 +105,11 @@
 }
 
 .pl-scroll-left {
-  animation: scroll-left 60s linear infinite;
+  animation: scroll-left 45s linear infinite;
 }
 
 .pl-scroll-right {
-  animation: scroll-right 60s linear infinite;
+  animation: scroll-right 45s linear infinite;
 }
 
 .pl-vignette {
