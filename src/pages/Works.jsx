@@ -4,7 +4,7 @@ import './Works.css'
 import playloggedLogo from '../assets/html-mockups/playlogged-mockup/playlogged-logo.svg'
 import dotsMenuIcon from '../assets/icons/dots-menu.svg'
 import trueinsightVideo from '../assets/html-mockups/trueinsight/cropped.mov'
-import lelandVideo from '../assets/works-img/leland-recording-1.mov'
+import LelandMockup from '../components/leland-mockup/LelandMockup'
 
 const images = Object.entries(
   import.meta.glob('../assets/works-img/*.{png,jpg,jpeg,gif,webp,svg}', { eager: true, import: 'default' })
@@ -51,14 +51,7 @@ function Works() {
           <div className="grid-item">
             <div className="featured-work">
               <div className="featured-work-inner leland-inner">
-                <video
-                  src={lelandVideo}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="leland-video"
-                />
+                <LelandMockup />
               </div>
             </div>
           </div>

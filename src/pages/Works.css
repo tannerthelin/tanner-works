@@ -190,16 +190,8 @@
 /* Leland mockup */
 
 .leland-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.leland-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  position: relative;
+  overflow: hidden;
 }
 
 /* TrueInsight mockup */
