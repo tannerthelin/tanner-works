@@ -49,7 +49,12 @@ function Index() {
 
       <header className="work-header">
         <div className="headline">
-          <p>A chronological index of selected projects, 2020 – present.</p>
+          <p>
+            Tanner is a Design Engineer in Salt Lake City. Currently Head of Design at{' '}
+            <a href="https://www.joinleland.com" className="headline-link" target="_blank" rel="noopener noreferrer">
+              Leland
+            </a>.
+          </p>
         </div>
       </header>
 

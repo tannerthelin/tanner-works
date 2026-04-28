@@ -187,6 +187,37 @@
   opacity: 0.55;
 }
 
+/* Playlogged Nav mockup */
+
+.pn-featured-work {
+  align-items: flex-start;
+  --pn-fade: #F3F3F6;
+  position: relative;
+}
+
+[data-theme="dark"] .pn-featured-work {
+  --pn-fade: #1A1A1A;
+}
+
+.pn-featured-work::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    var(--pn-fade) 0%,
+    transparent 35%
+  );
+}
+
+.pn-featured-work .featured-work-inner {
+  width: 42%;
+  height: 85%;
+  border-radius: 0 0 6cqi 6cqi;
+}
+
 /* Leland mockup */
 
 .leland-inner {

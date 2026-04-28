@@ -5,6 +5,7 @@ import playloggedLogo from '../assets/html-mockups/playlogged-mockup/playlogged-
 import dotsMenuIcon from '../assets/icons/dots-menu.svg'
 import trueinsightVideo from '../assets/html-mockups/trueinsight/cropped.mov'
 import LelandMockup from '../components/leland-mockup/LelandMockup'
+import PlayloggedNav from '../components/playlogged-nav/PlayloggedNav'
 
 const images = Object.entries(
   import.meta.glob('../assets/works-img/*.{png,jpg,jpeg,gif,webp,svg}', { eager: true, import: 'default' })
@@ -38,7 +39,7 @@ function Works() {
       <section className="hero-centered">
         <div className="headline">
           <p>
-            Tanner is a Product Designer in Salt Lake City. Currently Head of Design at{' '}
+            Tanner is a Design Engineer in Salt Lake City. Currently Head of Design at{' '}
             <a href="https://www.joinleland.com" className="headline-link" target="_blank" rel="noopener noreferrer">
               Leland
             </a>.
@@ -98,6 +99,14 @@ function Works() {
                   <button className="pl-btn">Join</button>
                 </div>
                 <img src={dotsMenuIcon} alt="" className="pl-dots-menu" />
+              </div>
+            </div>
+          </div>
+
+          <div className="grid-item">
+            <div className="featured-work pn-featured-work">
+              <div className="featured-work-inner">
+                <PlayloggedNav />
               </div>
             </div>
           </div>
