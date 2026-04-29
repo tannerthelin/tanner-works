@@ -57,7 +57,7 @@ function Works() {
             </div>
           </div>
 
-          {images.slice(2, 4).map((img) => (
+          {images.slice(2, 5).map((img) => (
             <div className="grid-item" key={img.name}>
               <img src={img.src} alt={img.name} className="grid-image" />
             </div>
@@ -96,8 +96,8 @@ function Works() {
             </div>
           </div>
 
-          <div className="grid-item" key={images[4]?.name}>
-            <img src={images[4]?.src} alt={images[4]?.name} className="grid-image" />
+          <div className="grid-item" key={images[5]?.name}>
+            <img src={images[5]?.src} alt={images[5]?.name} className="grid-image" />
           </div>
 
           <div className="grid-item">
@@ -115,7 +115,7 @@ function Works() {
             </div>
           </div>
 
-          {images.slice(5, 9).map((img) => (
+          {images.slice(6, 10).map((img) => (
             <div className="grid-item" key={img.name}>
               <img src={img.src} alt={img.name} className="grid-image" />
             </div>
@@ -125,7 +125,7 @@ function Works() {
             <img src={images[1]?.src} alt={images[1]?.name} className="grid-image" />
           </div>
 
-          {images.slice(9).map((img) => (
+          {images.slice(10).map((img) => (
             <div className="grid-item" key={img.name}>
               <img src={img.src} alt={img.name} className="grid-image" />
             </div>
