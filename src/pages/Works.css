@@ -80,15 +80,15 @@
 
 .pl-ticker-track {
   display: flex;
-  gap: 1cqi;
+  gap: 0.6cqi;
   width: max-content;
 }
 
 .pl-game-cover {
-  width: 7cqi;
-  aspect-ratio: 206 / 284;
+  width: 6.5cqi;
+  aspect-ratio: 190 / 284;
   object-fit: cover;
-  border-radius: 0.556cqi;
+  border-radius: 0.4cqi;
   display: block;
   flex-shrink: 0;
   opacity: 0.15;
