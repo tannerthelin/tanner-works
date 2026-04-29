@@ -27,22 +27,25 @@
   position: relative;
 }
 
-/* Content area */
+/* Content area — spacer to push navbar down */
 .pn-content {
   flex: 1;
-  position: relative;
-  overflow: hidden;
 }
 
-.pn-placeholder {
+/* Animated background page images */
+.pn-bg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
-  background: #111;
+  pointer-events: none;
+  user-select: none;
 }
 
 /* Bottom nav bar */
 .pn-navbar {
   position: relative;
+  z-index: 1;
   background: #000;
   padding: 2.5cqi 5cqi 10cqi;
 }
@@ -56,7 +59,7 @@
 .pn-tabs-right {
   display: flex;
   align-items: center;
-  gap: 3cqi;
+  gap: 4cqi;
 }
 
 .pn-tab {
@@ -85,16 +88,21 @@
 
 /* Avatar (profile) */
 .pn-avatar {
-  width: 8.25cqi;
-  height: 8.25cqi;
+  width: 9.5cqi;
+  height: 9.5cqi;
   border-radius: 50%;
   object-fit: cover;
+  border: 0.5cqi solid transparent;
+}
+
+.pn-tab--active .pn-avatar {
+  border-color: white;
 }
 
 /* SVG icons */
 .pn-icon {
-  width: 6.25cqi;
-  height: 6.25cqi;
+  width: 7.25cqi;
+  height: 7.25cqi;
 }
 
 /* Animated dot indicator */

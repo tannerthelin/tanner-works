@@ -57,22 +57,7 @@ function Works() {
             </div>
           </div>
 
-          <div className="grid-item">
-            <div className="featured-work">
-              <div className="featured-work-inner ti-inner">
-                <video
-                  src={trueinsightVideo}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="ti-video"
-                />
-              </div>
-            </div>
-          </div>
-
-          {images.slice(2, 5).map((img) => (
+          {images.slice(2, 4).map((img) => (
             <div className="grid-item" key={img.name}>
               <img src={img.src} alt={img.name} className="grid-image" />
             </div>
@@ -107,6 +92,25 @@ function Works() {
             <div className="featured-work pn-featured-work">
               <div className="featured-work-inner">
                 <PlayloggedNav />
+              </div>
+            </div>
+          </div>
+
+          <div className="grid-item" key={images[4]?.name}>
+            <img src={images[4]?.src} alt={images[4]?.name} className="grid-image" />
+          </div>
+
+          <div className="grid-item">
+            <div className="featured-work">
+              <div className="featured-work-inner ti-inner">
+                <video
+                  src={trueinsightVideo}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="ti-video"
+                />
               </div>
             </div>
           </div>
