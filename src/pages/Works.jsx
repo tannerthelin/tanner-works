@@ -6,6 +6,7 @@ import dotsMenuIcon from '../assets/icons/dots-menu.svg'
 import trueinsightVideo from '../assets/html-mockups/trueinsight/cropped.mov'
 import LelandMockup from '../components/leland-mockup/LelandMockup'
 import PlayloggedNav from '../components/playlogged-nav/PlayloggedNav'
+import LelandMobileVideos from '../components/leland-mobile-videos/LelandMobileVideos'
 
 const images = Object.entries(
   import.meta.glob('../assets/works-img/*.{png,jpg,jpeg,gif,webp,svg}', { eager: true, import: 'default' })
@@ -39,7 +40,9 @@ function Works() {
       <section className="hero-centered">
         <div className="headline">
           <p>
-            Tanner is a Design Engineer in Salt Lake City. Currently Head of Design at{' '}
+            Tanner is a Product Designer who builds, based in Salt Lake City.
+            <br /><br />
+            Currently Head of Design at{' '}
             <a href="https://www.joinleland.com" className="headline-link" target="_blank" rel="noopener noreferrer">
               Leland
             </a>.
@@ -57,7 +60,13 @@ function Works() {
             </div>
           </div>
 
-          {images.slice(2, 5).map((img) => (
+          <div className="grid-item">
+            <div className="featured-work">
+              <LelandMobileVideos />
+            </div>
+          </div>
+
+          {images.slice(3, 5).map((img) => (
             <div className="grid-item" key={img.name}>
               <img src={img.src} alt={img.name} className="grid-image" />
             </div>
